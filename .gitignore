@@ -1,5 +1,6 @@
-#### CREDENTIALS ####
-.private/
+#### OTHER ####
+private/
+.wallaby
 
 #### OSX ####
 
