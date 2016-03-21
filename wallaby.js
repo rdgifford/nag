@@ -1,6 +1,7 @@
 module.exports = function (wallaby) {
   return {
     files: [
+      'src/lib/*.js',
       'src/*.js',
       'test/lib/message/*.js',
       'spec/helpers/functions/*.js'

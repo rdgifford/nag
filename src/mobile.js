@@ -18,12 +18,8 @@ class mobile {
     db.push("/mobile", JSON.stringify(this), true)
     // db.push("/people/" + this.number, this.name, true)
   }
-  
+
   remove(){
-
-  }
-
-  find(){
 
   }
 }
