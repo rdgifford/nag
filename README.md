@@ -1,2 +1,2 @@
-# hackreactorproject
-A project for hack reactor
+# nag
+An sms-based chore reminder app.

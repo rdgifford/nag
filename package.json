@@ -1,36 +1,24 @@
 {
   "name": "Nag",
   "version": "1.0.0",
-  "description": "A project to remind housemates to do chores",
+  "description": "A project to remind housemates to do chores.",
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rdgifford/hackreactorproject.git"
+    "url": "git+https://github.com/rdgifford/nag.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rdgifford/hackreactorproject/issues"
+    "url": "https://github.com/rdgifford/nag/issues"
   },
-  "homepage": "https://github.com/rdgifford/hackreactorproject#readme",
+  "homepage": "https://github.com/rdgifford/nag#readme",
   "devDependencies": {
-    "browserify": "^13.0.0",
     "colors": "^1.1.2",
-    "deep-extend": "^0.4.1",
     "jasmine": "^2.4.1",
-    "jest-cli": "^0.9.1",
-    "karma": "^0.13.22",
-    "karma-browserify": "^5.0.2",
-    "karma-chrome-launcher": "^0.2.2",
-    "karma-commonjs": "0.0.13",
-    "karma-jasmine": "^0.3.7",
-    "karma-requirejs": "^0.2.5",
     "node-json-db": "^0.6.3",
     "node-schedule": "^1.1.0",
-    "requirejs": "^2.1.22",
-    "rewire": "^2.5.1",
-    "twilio": "^2.9.0",
-    "watchify": "^3.7.0"
+    "twilio": "^2.9.0"
   }
 }
