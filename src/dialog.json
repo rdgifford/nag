@@ -1,0 +1,13 @@
+{
+  "auto intro": "Hey, I’m Nag--a chore reminder app. Your number has been placed in my database, but I don’t have your name. Would you mind giving it to me? Just give me your first and last separated by a single space.",
+  "auto intro reply": "<<>>, you're now in my database. Thank you!",
+  "auto intro reply error": "\"<<>>\" is an invalid response. Please give me your first and last name separated by a single space. Only characters A-Z, ’, and -, are acceptable constituents of a name (case-insensitive).",
+  "chore": "Alright, I'll nag the next person assigned to <<>>.",
+  "chore error": "Invalid command. You may have provided an invalid chore. Here are valid chores: <<>>.",
+  "reminder": "It's your turn to <<>>. Text me once you've finished.",
+  "done": "You finished? Good to hear. I'll switch the next person to <<>>.",
+  "done error": "Invalid command. You may have provided an invalid chore, you may not be this chore's assignee, or this chore may not be ready to be done. Here are valid chores: <<>>.",
+  "skip": "You want to skip <<>> this time? Alright. You have <<>> left for the month.",
+  "skip error": "Invalid reponse. You have <<>> skips left this month. You may have provided an invalid chore. Here are valid chores: <<>>.",
+  "default": "Invalid response. Please provide a response in the following format:\nnag <command> <data entry>\nex: nag chore Empty Dishwasher\nValid commands are chore, skip, done."
+}

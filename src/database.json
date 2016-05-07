@@ -1,1 +1,48 @@
-{"houses":{"2141 Fairmount":{"inhabitants":["Allen Blanton"],"chores":{"Empty Dishwasher":{"description":"Put away clean dishes","recurrence":"auto or Number (seconds)","ready state":"yes or no","ready condition":"Dishwasher has been started"}}}},"mobile":{"+15035777844":{"name":"Robbie Gifford","house":null,"chores":null}}}
+{
+    "phones": {
+        "+15035777844": {
+            "person": "Robert Gifford",
+            "waiting": false,
+            "skips": 2,
+            "dirlog": [
+                "done",
+                "reminder"
+            ]
+        },
+        "+14086444898": {
+            "person": "Fabian Bitterli",
+            "waiting": false,
+            "skips": 2,
+            "dirlog": [
+                "chore",
+                "chore",
+                "auto intro reply",
+                "auto intro",
+                "auto intro"
+            ]
+        },
+        "+15099991157": {
+            "person": "Allen Blanton",
+            "waiting": false,
+            "skips": 2,
+            "dirlog": [
+                "reminder",
+                "default",
+                "auto intro reply",
+                "auto intro",
+                "auto intro"
+            ]
+        }
+    },
+    "chores": {
+        "Empty Dishwasher": {
+            "reminderType": "ready",
+            "ready": true,
+            "skips": [],
+            "exceptions": [],
+            "description": {},
+            "assignee": "+15099991157",
+            "lastRem": "Thu May 05 2016 22:44:19 GMT-0700 (PDT)"
+        }
+    }
+}
