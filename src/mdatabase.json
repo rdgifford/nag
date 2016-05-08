@@ -5129,5 +5129,260 @@
                 "data entry": "Empty Dishwasher"
             }
         ]
+    },
+    "May 06 2016": {
+        "+15099991157": [
+            {
+                "direction": "inbound",
+                "from": "+15035777844",
+                "body": "nag chore Empty Dishwasher",
+                "msid": "SM0156d6afbdd13789147ea8423476b9b6",
+                "directive": "chore",
+                "data entry": "Empty Dishwasher"
+            },
+            {
+                "direction": "outbound",
+                "person": "",
+                "to": "+15099991157",
+                "body": "",
+                "directive": "reminder",
+                "data entry": "Empty Dishwasher"
+            },
+            {
+                "direction": "inbound",
+                "from": "+15099991157",
+                "body": "nag done Empty Dishwasher",
+                "msid": "SM58202cf76fc66cfb25046b3917927678",
+                "directive": "done",
+                "data entry": "Empty Dishwasher"
+            },
+            {
+                "direction": "inbound",
+                "from": "+15099991157",
+                "body": "nag done Empty Dishwasher",
+                "msid": "SMede8dc5fd59a0aad9dccb61fa95b13de",
+                "directive": "done",
+                "data entry": "Empty Dishwasher"
+            }
+        ],
+        "undefined": [
+            {
+                "direction": "inbound",
+                "from": "+15035777844",
+                "body": "nag done Empty Dishwashee",
+                "msid": "SM28f457d47b5d51433129d2810d81f93f",
+                "directive": "done",
+                "data entry": "Empty Dishwashee"
+            },
+            {
+                "direction": "inbound",
+                "from": "+15035777844",
+                "body": "nag done Empty Dishwashee",
+                "msid": "SMbe6b27031026b284a3cfcb7a3b0d4b84",
+                "directive": "done",
+                "data entry": "Empty Dishwashee"
+            }
+        ],
+        "+15035777844": [
+            {
+                "direction": "outbound",
+                "person": "",
+                "to": "+15035777844",
+                "directive": "done",
+                "data entry": "Empty Dishwashee"
+            },
+            {
+                "direction": "outbound",
+                "person": "",
+                "to": "+15035777844",
+                "directive": "done error",
+                "data entry": "Empty Dishwashee"
+            },
+            {
+                "direction": "outbound",
+                "person": "",
+                "to": "+15035777844",
+                "directive": "done",
+                "data entry": "Empty Dishwashee"
+            },
+            {
+                "direction": "outbound",
+                "person": "",
+                "to": "+15035777844",
+                "directive": "done error",
+                "data entry": "Empty Dishwashee"
+            },
+            {
+                "direction": "inbound",
+                "from": "+15035777844",
+                "body": "nag done Empty Dishwasher",
+                "msid": "SMfaf54a15578ec295fffe44f15a3fe38f",
+                "directive": "done",
+                "data entry": "Empty Dishwasher"
+            },
+            {
+                "direction": "inbound",
+                "from": "+15035777844",
+                "body": "No duck",
+                "msid": "SM5c2dc9dbf6e5d2297a2ece778e055f0e",
+                "directive": "default"
+            },
+            {
+                "direction": "inbound",
+                "from": "+15035777844",
+                "body": "nag done Empty Dishwasher",
+                "msid": "SM090bd701c173db9e845b2b7fd7cf8658",
+                "directive": "done",
+                "data entry": "Empty Dishwasher"
+            }
+        ]
+    },
+    "May 07 2016": {
+        "2": [
+            {
+                "direction": "inbound",
+                "from": "+15099991157",
+                "body": "nag skip Empty Dishwasher",
+                "msid": "SMef3baf2a6df1a1fe610f19178349ae48",
+                "directive": "skip",
+                "data entry": "Empty Dishwasher"
+            }
+        ],
+        "+15035777844": [
+            {
+                "direction": "inbound",
+                "from": "+15035777844",
+                "body": "nag done Empty Dishwasher",
+                "msid": "SM0aa146d33d04d9f94f96814aaa69cc4b",
+                "directive": "done",
+                "data entry": "Empty Dishwasher"
+            },
+            {
+                "direction": "inbound",
+                "from": "+15035777844",
+                "body": "nag done Empty Dishwasher",
+                "msid": "SM59582d712165ef210200bca694a9c9d2",
+                "directive": "done",
+                "data entry": "Empty Dishwasher"
+            },
+            {
+                "direction": "inbound",
+                "from": "+14086444898",
+                "body": "nag skip Empty Dishwasher",
+                "msid": "SMe6c6f409e89437240a34d0252600fbf6",
+                "directive": "skip",
+                "data entry": "Empty Dishwasher"
+            },
+            {
+                "direction": "outbound",
+                "person": "",
+                "to": "+15035777844",
+                "body": "",
+                "directive": "reminder",
+                "data entry": "Empty Dishwasher"
+            },
+            {
+                "direction": "inbound",
+                "from": "+15035777844",
+                "body": "nag done Empty Dishwasher",
+                "msid": "SM0a0af0a4106792a2356586ebebfbf4fe",
+                "directive": "done",
+                "data entry": "Empty Dishwasher"
+            }
+        ],
+        "+15099991157": [
+            {
+                "direction": "inbound",
+                "from": "+15035777844",
+                "body": "nag chore Empty Dishwasher",
+                "msid": "SMaaff17748d93e19371de273db63a37ac",
+                "directive": "chore",
+                "data entry": "Empty Dishwasher"
+            },
+            {
+                "direction": "outbound",
+                "person": "",
+                "to": "+15099991157",
+                "body": "",
+                "directive": "reminder",
+                "data entry": "Empty Dishwasher"
+            }
+        ],
+        "+14086444898": [
+            {
+                "direction": "inbound",
+                "from": "+15099991157",
+                "body": "nag skip Empty Dishwasher",
+                "msid": "SMecc4a3e4e35de8b1dcc58d07f349ffe2",
+                "directive": "skip",
+                "data entry": "Empty Dishwasher"
+            },
+            {
+                "direction": "outbound",
+                "person": "",
+                "to": "+14086444898",
+                "body": "",
+                "directive": "reminder",
+                "data entry": "Empty Dishwasher"
+            },
+            {
+                "direction": "inbound",
+                "from": "+14086444898",
+                "body": "Good morning",
+                "msid": "SM5a210ed61d38221c8171bc33fb6f9839",
+                "directive": "default"
+            },
+            {
+                "direction": "inbound",
+                "from": "+14086444898",
+                "body": "Skip",
+                "msid": "SM9abe445f14e2a1ee319674bff6e85b3b",
+                "directive": "default"
+            },
+            {
+                "direction": "outbound",
+                "person": "",
+                "to": "+14086444898",
+                "directive": "skip",
+                "data entry": "empty dishwasher"
+            },
+            {
+                "direction": "outbound",
+                "person": "",
+                "to": "+14086444898",
+                "directive": "skip error",
+                "data entry": "empty dishwasher"
+            }
+        ],
+        "undefined": [
+            {
+                "direction": "inbound",
+                "from": "+14086444898",
+                "body": "nag skip empty dishwasher",
+                "msid": "SM5856e48254c291c37a0f05baa6f007c2",
+                "directive": "skip",
+                "data entry": "empty dishwasher"
+            }
+        ]
+    },
+    "May 08 2016": {
+        "+15099991157": [
+            {
+                "direction": "inbound",
+                "from": "+15035777844",
+                "body": "Nag chore Empty Dishwasher",
+                "msid": "SM6f29c26843c2eb0e926072eec1a52b60",
+                "directive": "chore",
+                "data entry": "Empty Dishwasher"
+            },
+            {
+                "direction": "outbound",
+                "person": "",
+                "to": "+15099991157",
+                "body": "",
+                "directive": "reminder",
+                "data entry": "Empty Dishwasher"
+            }
+        ]
     }
 }

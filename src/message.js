@@ -48,7 +48,7 @@ class Message {
     var bodyArr = this.body.split(" ")
     }
 
-    if(bodyArr && bodyArr[0] === "nag") {
+    if(bodyArr && (bodyArr[0] === "nag" || bodyArr[0] === "Nag")) {
       this.directive = bodyArr[1]
       var dataEntryIndex = this.body.match(bodyArr[1]).index + bodyArr[1].length + 1
       this['data entry'] = this.body.slice(dataEntryIndex)

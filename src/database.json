@@ -1,10 +1,14 @@
 {
     "phones": {
-        "+15035777844": {
-            "person": "Robert Gifford",
+        "+15099991157": {
+            "person": "Allen Blanton",
             "waiting": false,
-            "skips": 2,
+            "skips": 1,
             "dirlog": [
+                "reminder",
+                "skip",
+                "reminder",
+                "chore",
                 "done",
                 "reminder"
             ]
@@ -12,8 +16,13 @@
         "+14086444898": {
             "person": "Fabian Bitterli",
             "waiting": false,
-            "skips": 2,
+            "skips": 1,
             "dirlog": [
+                "skip",
+                "skip error",
+                "default",
+                "default",
+                "reminder",
                 "chore",
                 "chore",
                 "auto intro reply",
@@ -21,11 +30,25 @@
                 "auto intro"
             ]
         },
-        "+15099991157": {
-            "person": "Allen Blanton",
+        "+15035777844": {
+            "person": "Robert Gifford",
             "waiting": false,
             "skips": 2,
             "dirlog": [
+                "chore",
+                "done",
+                "reminder",
+                "chore",
+                "done",
+                "done",
+                "done",
+                "default",
+                "done",
+                "done error",
+                "done error",
+                "done",
+                "done",
+                "reminder",
                 "reminder",
                 "default",
                 "auto intro reply",
@@ -42,7 +65,7 @@
             "exceptions": [],
             "description": {},
             "assignee": "+15099991157",
-            "lastRem": "Thu May 05 2016 22:44:19 GMT-0700 (PDT)"
+            "lastRem": "Sun May 08 2016 00:06:39 GMT-0700 (PDT)"
         }
     }
 }
