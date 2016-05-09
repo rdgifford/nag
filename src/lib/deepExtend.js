@@ -1,29 +1,22 @@
+// deepExtend extends all properties, including nested ones, and extends them
+// from extender to extendee.
 function deepExtend(extendee, extender) {
-  //deepExtend is a pure function
-
-  // //loop one fewer times than the number of arguments given
-  // for(var i = 1; i < arguments.length; i++){
-  //for each prop of argument i
+  // for each prop of extender
   for (var prop in extender) {
-    //if the type of prop is an object and does not equal null, call
-    //deepExtend with the nested values of argument 0 and i
+    // if extender property evaluates to true and extender property is an object
+    // in short, if extender prop is a nested object
     if (extender[prop] && extender[prop].constructor === Object) {
+      // set extender property to extendee, or an empty object (if extender
+      // property evaluates to false)
       extendee[prop] = extendee[prop] || {};
+      // recursively call deepExtend on the nested objects within extender / extendee
       deepExtend(extendee[prop], extender[prop])
     } else {
-      //and if argument i has a prop
-      // if(extender.hasOwnprop(prop))
-      //give it to argument 0
-      // if(!extendee.hasOwnProperty(prop)){
-      //   extendee[prop] = extender[prop]
-      // } else {
-      extendee[prop] = extendee.hasOwnProperty(prop) ?
-        extendee[prop] : extender[prop];
-      // }
+      // set extendee prop to extendee prop if extendee has prop, otherwise set
+      // it to extender prop
+      extendee[prop] = extendee.hasOwnProperty(prop) ? extendee[prop] : extender[prop];
     }
   }
-  // }
-  //return argument 0 with new properties
   return extendee;
 }
 

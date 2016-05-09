@@ -11,35 +11,44 @@ const colors = require('colors');
 const Message = require('../message.js')
 const filterWrapIndex = require('./filterWrapIndex.js')
 const postMessage = require('./postMessage.js')
+const priv = require('../private.js')
   /*
   exec(data, condition, passingCallback, options)
   data = [message, phoneData, chores]
   condition = function(){}
   passingCallback = function(){}
-  options (w/ defaults) = {
-    waitingSwitch: true,
+  options (w/ defaults and use) = {
+    waiting: false,
+      Boolean: sets phoneData.waiting if "reply" is desired
     returnMessage: true,
+      Boolean: sets whether automatic message sent
+      or
+      Array: replaces '<<>>' in dialog matching route.prop name in order supplied
+      and sends message
     setDirLog: true,
+      Boolean: sets whether route records dir in phoneData.dirLog
     dialogDb: dialog,
+      Var: sets location of dialog JSON db
     dialogPath: null
+      String: sets dirPath withing dialog JSON db
   }
   */
 
 var route = {
   //INTRODUCTIONS
   "auto intro": function(data) {
-    exec(data, true)
+    exec(data, true, null, { waiting: true })
   },
   "auto intro reply": function(data) {
     exec(data,
       function() {
-        //RegExp matcher for one word, one space, and one more word
+        // regExp matcher for one word, one space, and one more word
         var isName = (/^[a-z'-]+[ ][a-z'-]+$/i)
-        //Test if the message body matchs isName RegExp
+        // test if message body matchs isName regExp
         return isName.test(this.message.body)
       },
       function() {
-        //Set a persons name
+        // set a name on phoneData
         this.phoneData.person = this.message.body
         this.message.person = this.message.body
       }, {
@@ -51,59 +60,48 @@ var route = {
     )
   },
   "auto intro reply error": function(data) {
-    exec(data, true, null, {
-      waitingSwitch: false
-    })
+    exec(data, true, null, { waiting: true })
   },
   //COMMANDS
-  //Require message.body format = "nag <<command>> <<data entry>>"
+  // require message.body format = "nag <<command>> <<data entry>>"
   "reminder": function(data) {
     exec(data, true,
       function() {
-        var fourHours = 60 * 60 * 1000 * 4
-        this.chore = this.chores[this.message['data entry']]
-        //Set lastRem to current date
-        if(((new Date) - this.chore.lastRem < fourHours) || (this.chore.lastRem instanceof Date === false)){
+        this.chore = this.chores[this.message.dataEntry]
+        // set lastRem to current dateString if lastRem less than priv.choreReminderFreq ago or lastRem is not a Date
+        if(((new Date) - this.chore.lastRem < priv.choreReminderFreq) || (this.chore.lastRem instanceof Date === false)){
           this.chore.lastRem = new Date().toString()
         }
       },
-      {
-        waitingSwitch: false,
-        returnMessage: function(){
-          return [this.message['data entry']]
-        }
-      }
+      { returnMessage: function(){ return [this.message.dataEntry] } }
     )
   },
   "chore": function(data) {
     exec(data,
       function() {
-        //Set this.chore equal to the message body data entry specified (as an object).
-        this.chore = this.chores[this.message['data entry']]
+        // set this.chore equal to data entry parsed from message body
+        this.chore = this.chores[this.message.dataEntry]
+        // condition: if this.chore is valid chore
         return this.chore !== undefined && this.chore !== null
       },
       function() {
-        // console.log("THIS.CHORE: " + util.inspect(this.chore, false, null))
-        // console.log("THIS.PHONEDATA in ROUTE.CHORE: " + util.inspect(this.phoneData, false, null))
-        //If four hours have passed since the last reminder of this.chore, send another
-        //Create a post reminder
-        var reminder = new Message(null, undefined, this.chore.assignee, "reminder", this.message['data entry'])
-        // postMessage(reminder)
+        var reminder = new Message(null, undefined, this.chore.assignee, "reminder", this.message.dataEntry)
+        // send reminder to chore assignee of this.chore
         postMessage(reminder)
+        // if reminderType of this.chore is ready and it isn't ready,
         if (this.chore.reminderType === 'ready' && this.chore.ready === false) {
+          // ready it
           this.chore.ready = true
         }
       }, {
-        waitingSwitch: false,
         returnMessage: function() {
-          return [this.message['data entry']]
+          return [this.message.dataEntry]
         }
       }
     )
   },
   "chore error": function(data) {
     exec(data, true, null, {
-      waitingSwitch: false,
       returnMessage: function() {
         return [Object.keys(this.chores)]
       }
@@ -112,31 +110,41 @@ var route = {
   "done": function(data){
     exec(data,
       function() {
-        //Set this.chore equal to the message body data entry specified (as an object).
-        this.chore = this.chores[this.message['data entry']]
+        // set this.chore equal to data entry parsed from message body
+        this.chore = this.chores[this.message.dataEntry]
+        // condition: if this.chore evaluates to true, sender is this.chore.assignee,
+        // and this.chore is readied
         return this.chore && this.chore.assignee === this.message.from && this.chore.ready
       },
       function(){
+        // set var for phone numbers in db
         var phoneNumbers = Object.keys(db.getData("/phones"))
+        // set var for index of this.chore.assignee + 1
         var nextIndex = phoneNumbers.indexOf(this.chore.assignee) + 1
+        // set var for nextAssigneeIndex from filtering phoneNumbers with
+        // this.chore.skips and this.chore.exceptions
         var nextAssigneeIndex = filterWrapIndex(nextIndex, phoneNumbers, this.chore.skips, this.chore.exceptions)
-        if (nextAssigneeIndex < phoneNumbers.length && nextAssigneeIndex >= 0) {
-          this.chore.assignee = phoneNumbers[nextAssigneeIndex]
-          this.chore.ready = false
-        } else {
+        // valid index must be greater than or equal to zero and less than length
+        // of phoneNumbers array
+        var isValidIndex = (nextAssigneeIndex < phoneNumbers.length && nextAssigneeIndex >= 0)
+
+        if (!isValidIndex) {
           console.error(("Error in route.done: nextAssignee evaluted to false.").red)
+        } else {
+          // set this.chore.assignee to next assignee
+          this.chore.assignee = phoneNumbers[nextAssigneeIndex]
+          // unready the chore
+          this.chore.ready = false
         }
       }, {
-        waitingSwitch: false,
         returnMessage: function() {
-          return [this.message['data entry']]
+          return [this.message.dataEntry]
         }
       }
     )
   },
   "done error": function(data) {
     exec(data, true, null, {
-      waitingSwitch: false,
       returnMessage: function() {
         return [Object.keys(this.chores)]
       }
@@ -145,8 +153,9 @@ var route = {
   "skip": function(data) {
     exec(data,
       function() {
-        //Set this.chore equal to the message body data entry specified (as an object).
-        this.chore = this.chores[this.message['data entry']]
+        this.chore = this.chores[this.message.dataEntry]
+        // condition: if this.chore evaluates to true and this.phoneData.skips
+        // is not 0
         return this.chore && this.phoneData.skips
       },
       function(){
@@ -154,46 +163,43 @@ var route = {
         var nextIndex = phoneNumbers.indexOf(this.chore.assignee) + 1
         var nextAssigneeIndex = filterWrapIndex(nextIndex, phoneNumbers, this.chore.skips, this.chore.exceptions)
         var isValidIndex = (nextAssigneeIndex < phoneNumbers.length && nextAssigneeIndex >= 0)
+        // set var isSkipped to the result of fetching the first match of the
+        // senders phone number with this.chore.skips array
         var isSkipped = fetchFirst(this.chore.skips, function(el, i){
           this.message.from === el
         }, this)
 
-        // If sender is assigned to chore, move them off, assign the next person to the chore, and take one of their skips
         if (!isValidIndex) {
           console.error(("Error in route.skip: nextAssignee evaluted to false.").red)
+          // if sender is assigned to chore, assign nextAssignee
         } else if (this.message.from === this.chore.assignee) {
           this.chore.assignee = phoneNumbers[nextAssigneeIndex]
+          // decrement senders skips
           this.phoneData.skips--
         } else {
-          // if sender is not chore.assignee and not already in skips, add it
-          // to skips and decrement sender.skips
+          // if sender phone number not this.chore.assignee and isn't already in skips,
+          // push sender phone number to this.chore.skips and decrement senders skips
           isSkipped || (this.chore.skips.push(this.message.from), this.phoneData.skips--)
         }
-        var reminder = new Message(null, undefined, this.chore.assignee, "reminder", this.message['data entry'])
+        // send reminder
+        var reminder = new Message(null, undefined, this.chore.assignee, "reminder", this.message.dataEntry)
         postMessage(reminder)
       }, {
-        waitingSwitch: false,
         returnMessage: function() {
-          return [this.message['data entry'], this.phoneData.skips]
+          return [this.message.dataEntry, this.phoneData.skips]
         }
       }
     )
   },
   "skip error": function(data){
     exec(data, true, null, {
-      waitingSwitch: false,
       returnMessage: function(){
         return [this.phoneData.skips, Object.keys(this.chores)]
       }
     })
   },
-  // "see": function(data) {
-  //   //validate and show dataPath
-  // },
   "default": function(data) {
-    exec(data, true, null, {
-      waitingSwitch: false
-    })
+    exec(data, true, null)
   }
 }
 

@@ -1,5 +1,5 @@
 'use strict'
-//chore needs to set and create a reminder
+// constructor for chores
 class Chore {
   constructor(title, description, assignee){
     var description = typeof description !== 'undefined' ? description : null;

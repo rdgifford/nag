@@ -210,8 +210,8 @@ describe("Message", function() {
       mx = new Message(parsed, 'Robert Gifford')
       expect(mx.command).toBe('chore')
       expect(mo.command).toBe('chore')
-      expect(mx['data entry']).toBe('Takeout Trash')
-      expect(mo['data entry']).toBe('Empty Dishwasher')
+      expect(mx.dataEntry).toBe('Takeout Trash')
+      expect(mo.dataEntry).toBe('Empty Dishwasher')
     })
   });
 

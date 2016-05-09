@@ -1,19 +1,24 @@
 const wrap = require('./wrap.js')
 const fetchFirst = require('./fetchFirst.js')
 
+// filter searchArr with skipArr and exceptionArr by incrementally wrapping
+// through searchArr, starting at searchIndex, and returning i of first non-matched el
+
+// skipArr el are removed on match
+// exceptionArr el are not removed on match
 var filterWrapIndex = function(searchIndex, searchArr, skipArr, exceptionArr) {
-  // wrap around searchArr with searchIndex in case it is greater than or equal to searchArr.length
+  // wrap searchArr with searchIndex in case it is greater than or equal to searchArr.length
   searchIndex = wrap(searchIndex, searchArr)
-  // wrap around searchArr with searchIndex + 1 and use it to pull an element from searchArr
+  // wrap searchArr with searchIndex + 1 and use it to pull an element from searchArr
   var nextSearchIndex = wrap(searchIndex + 1, searchArr)
   var nextSearch = searchArr[nextSearchIndex]
-  // test if an element is the element specified in searchArr at searchIndex
+  // test if el is el specified in searchArr at searchIndex
   var isSearch = function(el, i, arr) {
     return searchArr[searchIndex] === el;
   }
-  // fetch the first element matching search and assign to skip
+  // fetchFirst el from skipArr matching search, assign to skip
   var skip = fetchFirst(skipArr, isSearch, undefined)
-  // fetch the first element matching search and assign to exception
+  // fetchFirst el from exceptionAr matching search, assign to exception
   var exception = fetchFirst(exceptionArr, isSearch, undefined)
 
   // if there isn't a skip or an exception

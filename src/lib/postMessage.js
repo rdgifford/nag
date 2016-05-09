@@ -1,8 +1,8 @@
 const querystring = require('querystring')
 const request = require('request')
-const priv = require('../private/private.js')
+const priv = require('../private.js')
 
-//Make a post request to server with messageData, console.log the result
+// make post request to server with messageData, console.log result
 function postMessage(messageData) {
   request.post({
     url: priv.postURI,
