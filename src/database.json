@@ -6,12 +6,19 @@
             "skips": 0,
             "dirlog": [
             ]
+        },
+        "+phoneNumber": {
+            "person": null,
+            "waiting": false,
+            "skips": 0,
+            "dirlog": [
+            ]
         }
     },
     "chores": {
         "choreName": {
-            "reminderType": "ready, schedule, or recur",
-            "ready": null,
+            "reminderType": "ready",
+            "ready": false,
             "schedule": null,
             "recur": null,
             "skips": [],
