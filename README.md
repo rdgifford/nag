@@ -12,11 +12,11 @@ npm install -g localhost
 lt --port 3000 --subdomain nagdemo
 ```
 
-If you'd like you can mess with the cron strings for autoIntroFreq and choreReminderRefresh. Respectively, they control how frequently auto introductions are sent to phones with null for person, and how frequently scheduler checks the last reminders on chores. ChoreReminderFreq establishes how frequently last reminder is updated, and thus how frequently reminders will actually be sent.
-
 4. Name the chore and the two phones objects in 'src/database.json'. Fill in "+phoneNumber" for the two phone objects within phones with two different, full 10-digit phone numbers preceded by '+1' (ex: '+15038675309'). Fill in "choreName" for the chore object within chores with a chore (ex: 'Empty Dishwasher'), then fill in the  assignee property of that chore with one of the previously used phone numbers (ex: '+15038675309'). Do not worry about adding other objects and/or properties. The server will ask users for their names and fill out other properties once it begins running.
 
 5. Run server.js from the src folder: `node server.js`.
+
+If you'd like you can mess with the cron strings for autoIntroFreq and choreReminderRefresh. Respectively, they control how frequently auto introductions are sent to phones with null for person, and how frequently scheduler checks the last reminders on chores. ChoreReminderFreq establishes how frequently last reminder is updated, and thus how frequently reminders will actually be sent.
 
 ## Use
 Commands work like a really simple CLI, they are:
