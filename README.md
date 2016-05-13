@@ -7,10 +7,10 @@ An sms-based chore reminder app.
 2. Add your Twilio Credentials -- your accountSid, authToken, and phoneNumber -- to 'src/config.js'. Once logged in to Twilio this info can be found [here](https://www.twilio.com/user/account/messaging/dev-tools/api-explorer/message-create).
 
 3. Use [localtunnel](https://github.com/localtunnel/localtunnel) to tunnel from the web to localhost. In the project file we'll run two commands
-```
-npm install -g localhost
-lt --port 3000 --subdomain nagdemo
-```
+    ```
+    npm install -g localhost
+    lt --port 3000 --subdomain nagdemo
+    ```
 
 4. Name the chore and the two phones objects in 'src/database.json'. Fill in "+phoneNumber" for the two phone objects within phones with two different, full 10-digit phone numbers preceded by '+1' (ex: '+15038675309'). Fill in "choreName" for the chore object within chores with a chore (ex: 'Empty Dishwasher'), then fill in the  assignee property of that chore with one of the previously used phone numbers (ex: '+15038675309'). Do not worry about adding other objects and/or properties. The server will ask users for their names and fill out other properties once it begins running.
 
