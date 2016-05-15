@@ -1,10 +1,10 @@
 'use strict'
 
-const priv = require('./private.js');
+const config = require('./config.js');
 const identify = require('./lib/identify.js')
 const jsonDB = require('node-json-db');
 const db = new jsonDB("database.json", true, true);
-const client = require('twilio')(priv.accountSid, priv.authToken);
+const client = require('twilio')(config.accountSid, config.authToken);
 const util = require('util');
 const colors = require('colors');
 
@@ -66,7 +66,7 @@ class Message {
   send(body) {
     client.messages.create({
       to: this.from || this.to,
-      from: priv.phoneNumber,
+      from: config.phoneNumber,
       body: body
     });
   }

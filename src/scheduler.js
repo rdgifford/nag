@@ -6,11 +6,11 @@ const schedule = require('node-schedule')
 const route = require('./lib/route.js')
 const forEachObj = require('./lib/forEachObj.js')
 const colors = require('colors');
-const priv = require('./private.js');
+const config = require('./config.js');
 
 var scheduler = function() {
   // AUTO INTRO
-  schedule.scheduleJob(priv.autoIntroFreq, function() {
+  schedule.scheduleJob(config.autoIntroFreq, function() {
     // forEach phone in database if obj.person = null, send auto intro
     forEachObj("/phones", true, function(key, obj, i, arr) {
       if (obj.person == null) {
@@ -24,7 +24,7 @@ var scheduler = function() {
   })
 
   // CHORE REMINDERS
-  schedule.scheduleJob(priv.choreReminderRefresh, function() {
+  schedule.scheduleJob(config.choreReminderRefresh, function() {
     var reminderType = {
       'ready?': function(obj) {
         return obj.ready === true
@@ -38,7 +38,7 @@ var scheduler = function() {
       var lastReminder = (new Date - new Date(obj.lastRem))
       // if the last reminder sent was sent longer ago than choreReminderFreq
       // and the reminderType conditional passes
-      if (lastReminder > priv.choreReminderFreq && reminderType[obj.reminderType + "?"](obj)) {
+      if (lastReminder > config.choreReminderFreq && reminderType[obj.reminderType + "?"](obj)) {
         // call the reminderType function
         reminderType[obj.reminderType](obj);
         // and post a reminder for the chore assignee and console.log
