@@ -11,7 +11,7 @@ const colors = require('colors');
 const Message = require('../message.js')
 const filterWrapIndex = require('./filterWrapIndex.js')
 const postMessage = require('./postMessage.js')
-const config = require('../config.js')
+
   /*
   exec(data, condition, passingCallback, options)
   data = [message, phoneData, chores]
@@ -68,8 +68,8 @@ var route = {
     exec(data, true,
       function() {
         this.chore = this.chores[this.message.dataEntry]
-        // set lastRem to current dateString if lastRem less than config.choreReminderFreq ago or lastRem is not a Date
-        if(((new Date) - this.chore.lastRem < config.choreReminderFreq) || (this.chore.lastRem instanceof Date === false)){
+        // set lastRem to current dateString if lastRem less than process.env.CHOREREMINDERFREQ ago or lastRem is not a Date
+        if(((new Date) - this.chore.lastRem < process.env.CHOREREMINDERFREQ) || (this.chore.lastRem instanceof Date === false)){
           this.chore.lastRem = new Date().toString()
         }
       },

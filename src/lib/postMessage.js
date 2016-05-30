@@ -1,11 +1,10 @@
 const querystring = require('querystring')
 const request = require('request')
-const config = require('../config.js')
 
 // make post request to server with messageData, console.log result
 function postMessage(messageData) {
   request.post({
-    url: config.postURI,
+    url: process.env.POSTURI,
     body: querystring.stringify(messageData)
   }, function(err, httpResponse, body) {
     if (err) {

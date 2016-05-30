@@ -60,7 +60,8 @@ var serv = http.createServer(function(req, res) {
     res.end();
   }
 });
-serv.listen(3000)
+var port = Number(process.env.PORT || 3000);
+serv.listen(port);
 console.log('Server running at localhost:3000');
 
 // scheduler (chore reminders and auto intro)
